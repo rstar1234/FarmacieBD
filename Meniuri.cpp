@@ -6,7 +6,7 @@
 
 void optiuni() {
 	system("CLS");
-	system("Color 0A");
+	system("Color 09");
 	std::cout << "1. Afisare\n";
 	std::cout << "2. Cautare\n";
 	std::cout << "3. Modificare\n";
