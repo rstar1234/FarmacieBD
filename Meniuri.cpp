@@ -31,7 +31,7 @@ void cautareMedicamente(Medicament medicament, std::vector<Medicament> medicamen
 		std::cout << "6. Nume Furnizor\n";
 		std::cout << "7. Data Fabricarii\n";
 		std::cout << "8. Data Expirarii\n";
-		std::cout << "9. Nume Furnizor\n";
+		std::cout << "9. ID Furnizor\n";
 		std::cout << "X. Inapoi\n";
 		std::cin >> optiuneCautare;
 		if (optiuneCautare == 'X') {
@@ -73,7 +73,7 @@ void cautareMedicamente(Medicament medicament, std::vector<Medicament> medicamen
 			_getch();
 			break;
 		case '9':
-			cautareDupaFurnizorMedicament(medicamente);
+			ModificaFurnizorIDMedicament(medicamente);
 			_getch();
 			break;
 		default:

@@ -553,7 +553,7 @@ void cautareDupaDataFabricarii(std::vector<Medicament> medicamente) {
 		FiltrareAnteturiMedicamente(medicamente);
 	}
 	else {
-		cout << "Nu s-a gasit un medicament produs de acea companie.\n";
+		cout << "Nu s-a gasit un medicament produs la acea data.\n";
 	}
 	delete pstmt;
 	delete result;
@@ -582,7 +582,7 @@ void cautareDupaDataExpirarii(std::vector<Medicament> medicamente) {
 	string data_expirarii_de_cautat = "";
 	cout << "Introduceti data la care a fost fabricat medicamentul cautat:\n";
 	cin >> data_expirarii_de_cautat;
-	sql:: PreparedStatement* pstmt = con->prepareStatement("SELECT `ID`, `NumeStiintific`, `NumeComercial`, `DataFabricarii`, `AfectiuneTratata`, `FurnizorID` FROM `medicamente` WHERE `DataExpirarii` LIKE ?");
+	sql:: PreparedStatement* pstmt = con->prepareStatement("SELECT `ID`, `NumeStiintific`, `NumeComercial`, `DataExpirarii`, `AfectiuneTratata`, `FurnizorID` FROM `medicamente` WHERE `DataExpirarii` LIKE ?");
 	data_expirarii_de_cautat = "%" + data_expirarii_de_cautat + "%";
 	pstmt->setString(1, data_expirarii_de_cautat);
 	sql::ResultSet* result = pstmt->executeQuery();
@@ -593,7 +593,7 @@ void cautareDupaDataExpirarii(std::vector<Medicament> medicamente) {
 			id = result->getInt("ID");
 			nume_stiintific = result->getString("NumeStiintific");
 			nume_comercial = result->getString("NumeComercial");
-			data_fabricarii = result->getString("DataFabricarii");
+			data_expirarii = result->getString("DataExpirarii");
 			afectiune_tratata = result->getString("AfectiuneTratata");
 			furnizor_id = result->getInt("FurnizorID");
 			Medicament medicament = Medicament(id, nume_comercial, nume_stiintific, producator, pret, data_fabricarii, data_expirarii, afectiune_tratata, furnizor_id);
@@ -604,7 +604,7 @@ void cautareDupaDataExpirarii(std::vector<Medicament> medicamente) {
 		FiltrareAnteturiMedicamente(medicamente);
 	}
 	else {
-		cout << "Nu s-a gasit un medicament produs de acea companie.\n";
+		cout << "Nu s-a gasit un medicament care expira la acea data.\n";
 	}
 	delete pstmt;
 	delete result;
